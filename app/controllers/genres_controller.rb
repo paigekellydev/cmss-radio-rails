@@ -3,7 +3,7 @@ class GenresController < ApplicationController
         @genres = Genre.all
         render json: @genres,
             include: [:songs],
-            except: [:created_at, :updated_at]
+            except: [:created_at, :updated_at],
             status: :ok
     end
 
@@ -16,7 +16,7 @@ class GenresController < ApplicationController
         @genre = Genre.find(params[:id])
         render json: @genre, 
             include: [:songs],
-            except: [:created_at, :updated_at]
+            except: [:created_at, :updated_at],
             status: :ok
     end
 
