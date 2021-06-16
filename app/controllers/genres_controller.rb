@@ -1,8 +1,9 @@
 class GenresController < ApplicationController
     def index
         @genres = Genre.all
-        render json: 
-            @genres, 
+        render json: @genres,
+            include: [:songs],
+            except: [:created_at, :updated_at]
             status: :ok
     end
 
@@ -13,7 +14,10 @@ class GenresController < ApplicationController
 
     def show
         @genre = Genre.find(params[:id])
-        render json: @genre, status: :ok
+        render json: @genre, 
+            include: [:songs],
+            except: [:created_at, :updated_at]
+            status: :ok
     end
 
     private

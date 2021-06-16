@@ -1,8 +1,9 @@
 class SongsController < ApplicationController
     def index
         @songs = Song.all
-        render json: 
-            @songs, 
+        render json: @songs,
+            include: [:genre, :artist],
+            except: [:created_at, :updated_at],
             status: :ok
     end
 
@@ -13,7 +14,10 @@ class SongsController < ApplicationController
 
     def show
         @song = Song.find(params[:id])
-        render json: @song, status: :ok
+        render json: @song, 
+            include: [genre: [:name], artist:[:name]],
+            except: [:created_at, :updated_at],
+            status: :ok
     end
 
     private
