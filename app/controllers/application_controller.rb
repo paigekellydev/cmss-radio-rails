@@ -11,8 +11,6 @@ class ApplicationController < ActionController::Base
             secret = '123456789abcdef'
             begin
                 JWT.decode token, secret
-                @users = User.all
-                render json: @users, status: :ok
             rescue
                 render json: {error: 'Bad token'}, status: :forbidden
             end
