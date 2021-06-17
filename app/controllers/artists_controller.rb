@@ -16,6 +16,12 @@ class ArtistsController < ApplicationController
         render json: @artist, status: :ok
     end
 
+    def update
+        @artist = Artist.find(params[:id])
+        @artist.update(artist_params)
+        render json: @artist, status: 204
+    end
+
     private
 
     def artist_params

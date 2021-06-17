@@ -16,6 +16,12 @@ class PlaylistsController < ApplicationController
         render json: @playlist, status: :ok
     end
 
+    def update
+        @playlist = Genre.find(params[:id])
+        @playlist.update(playlist_params)
+        render json: @playlist, status: 204
+    end
+
     private
 
     def playlist_params

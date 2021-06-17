@@ -20,6 +20,12 @@ class GenresController < ApplicationController
             status: :ok
     end
 
+    def update
+        @genre = Genre.find(params[:id])
+        @genre.update(genre_params)
+        render json: @genre, status: 204
+    end
+
     private
 
     def genre_params
