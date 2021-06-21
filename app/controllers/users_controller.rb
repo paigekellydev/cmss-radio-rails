@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create user_params
-        @favorites_playlist = Playlist.create(name: "Favorites")
         render json: @user, status: :created
     end
 
